@@ -6,8 +6,12 @@ html {min-width:640px}
 
 body {min-width:640px; margin:0; padding:0; font:16px/19px MuseoSansCyrl500, sans-serif; color:#3cbdd5; background:#000}
 
+@media screen and (max-width:1007px) {
+    body {font-size:26px; line-height:31px}
+}
+
 a {outline:none; color:#fff; text-decoration:none; transition:color .3s ease}
-a:hover {color:#3cbdd5}
+a:hover {color:#3cbdd5; text-decoration:none}
 
 img {border:none}
 
@@ -30,20 +34,80 @@ nav ul li a {display:block; height:98px; color:#fff; position:relative}
 nav ul li a:hover {color:#fff}
 nav ul li.active a:after,
 nav ul li a:hover:after {content:""; display:block; position:absolute; left:0; bottom:0; right:0; height:8px; background:#3cbdd5}
-nav ul li a span {position:absolute; left:0; bottom:16px; font:12px/18px MuseoSansCyrl100, sans-serif; white-space:nowrap}
+
+@media screen and (max-width:1439px) {
+    nav ul li {margin:0 0 0 50px}
+}
+
+@media screen and (max-width:1007px) {
+    nav {float:none; position:absolute; left:0; top:0; right:0; font-size:56px; text-align:center}
+    nav ul {display:inline-block; vertical-align:top}
+    nav ul li {float:none; margin:0; display:none}
+    nav ul li.active {display:block}
+}
 
 .phone {position:absolute; white-space:nowrap; position:absolute; left:100%; margin-left:-76px; top:0; font:26px/98px MuseoSansCyrl100, sans-serif}
 .phone a {color:#fff}
 
+@media screen and (max-width:1439px) {
+    .phone {left:auto; right:20px}
+}
+
+@media screen and (max-width:1007px) {
+    .phone {display:none}
+}
+
+.mobile-menu-link {display:none}
+
+@media screen and (max-width:1007px) {
+    .mobile-menu-link {display:block; position:absolute; right:20px; top:31px; border-top:8px solid #fff; border-bottom:8px solid #fff; height:24px; width:46px}
+    .mobile-menu-link:before {content:""; display:block; position:absolute; left:0; top:8px; right:0; height:8px; background:#fff}
+}
+
+.mobile-menu {display:none}
+
+@media screen and (max-width:1007px) {
+    .mobile-menu-open {overflow:hidden}
+    .mobile-menu-open body {overflow:hidden}
+    .mobile-menu-open .mobile-menu {display:block; position:fixed; left:0; top:0; right:0; bottom:0; background:#000; z-index:9999; overflow:auto}
+    .mobile-menu .logo {position:absolute; margin:0; left:20px; top:28px}
+    .mobile-menu-close {position:absolute; display:block; width:39px; height:39px; background:url(../images/mobile-menu-close.png); position:absolute; right:21px; top:31px}
+    .mobile-menu-list {text-align:center; font:56px/98px MuseoSansCyrl900, sans-serif; text-transform:uppercase; position:relative; letter-spacing:-1px}
+    .mobile-menu-list ul {margin:0; padding:0; list-style:none}
+    .mobile-menu-list ul li {margin:43px 0 0 0; padding:0}
+    .mobile-menu-list ul li:first-child {margin:0}
+    .mobile-menu-list ul li a {display:inline-block; block; height:98px; color:#fff; position:relative}
+    .mobile-menu-list ul li a:after {content:""; display:block; position:absolute; left:0; bottom:0; right:0; height:8px; background:#3cbdd5}
+    .mobile-menu-list ul li.active a:after {background:#fff}
+    .mobile-phone {text-align:center; color:#fff; font:56px/68px MuseoSansCyrl100, sans-serif; padding:147px 0 0 0}
+    .mobile-phone a {color:#fff; text-decoration:none}
+    .mobile-call {padding:31px 0 0 0}
+    .mobile-call a {display:block; margin:0 auto; width:216px; height:60px; background:#3cbdd5; font:20px/60px MuseoSansCyrl900, sans-serif; text-transform:uppercase; text-align:center; color:#000; text-decoration:none}
+    .mobile-call-text {text-align:center; font:20px/30px MuseoSansCyrl900, sans-serif; text-transform:uppercase; padding:41px 0}
+}
+
 .we-poster {height:400px; background-position:center top; background-size:cover}
 .we-play {position:relative; width:70px; height:70px; display:block; margin:-35px auto -48px auto; border-radius:50%; background:#3cbdd5}
 .we-play:after {content:""; display:block; width:0; height:0; border-left:19px solid #fff; border-top:11px solid transparent; border-bottom:11px solid transparent; position:absolute; left:28px; top:24px}
+
+@media screen and (max-width:1007px) {
+    .we-poster {height:500px}
+    .we-play {width:140px; height:140px; margin:-70px auto -83px auto}
+    .we-play:after {border-left-width:38px; border-top-width:23px; border-bottom-width:23px; left:56px; top:47px}
+}
 
 .we-block:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
 .we-block-title {float:left; width:50%; text-transform:uppercase; font:56px/68px MuseoSansCyrl900, sans-serif; color:#fff; letter-spacing:-3px}
 .we-block-text {float:left; width:50%; padding:63px 0 0 0}
 .we-block-text p {margin:0; padding:0}
 .we-block-text p+p {margin:19px 0 0 0}
+
+@media screen and (max-width:1007px) {
+    .we-block-title {float:none; width:auto; padding:111px 50px 0 50px}
+    .we-block-title br {display:none}
+    .we-block-text {float:none; width:auto; padding:16px 50px 0 50px}
+    .we-block-text p+p {margin:31px 0 0 0}
+}
 
 .welcome {margin:107px 0 0 0; position:relative}
 .welcome .container {position:static}
@@ -54,16 +118,18 @@ nav ul li a span {position:absolute; left:0; bottom:16px; font:12px/18px MuseoSa
 .welcome-text {float:left; width:50%; text-transform:uppercase; font:26px/31px MuseoSansCyrl100, sans-serif; color:#fff}
 .welcome-text span {font-family:MuseoSansCyrl900, sans-serif; color:#3cbdd5}
 
-.welcome-detail-bg {display:none; position:absolute; left:0; top:-86px; right:0; bottom:-90px; background:#2f5fa0}
-.welcome-detail-bg-2 {background:#a20f13}
-.welcome-detail {display:none; position:absolute; left:0; top:0; right:0; bottom:0}
+.welcome-detail {display:none; position:absolute; left:0; top:-86px; right:0; bottom:-90px; padding:86px 0 0 0; overflow:hidden}
 .welcome-detail-logos {float:left; width:50%; line-height:0; padding:5px 0 0 0}
-.welcome-detail-logo {float:left}
+.welcome-detail-logo {float:left; position:relative}
+.welcome-detail-logo-bg {position:absolute; width:0; height:0; left:73px; top:57px; transform:translate(-50%, -50%); background:#2f5fa0; border-radius:50%}
+.welcome-detail-logo-bg-2 {background:#a20f13}
 .welcome-detail-logo+.welcome-detail-logo {margin:0 0 0 92px}
+.welcome-detail-logo img {position:relative; z-index:1}
+.welcome-detail-logo a {position:relative; z-index:1}
 .welcome-detail-logo a img {opacity:.1}
 a.welcome-detail-logo-link {display:block; margin:32px 0 0 0; width:144px; height:40px; background:#3cbdd5; font:13px/40px MuseoSansCyrl900, sans-serif; text-transform:uppercase; text-align:center; color:#000}
-.welcome-detail-text {float:left; width:50%; font:18px/22px MuseoSansCyrl100, sans-serif; color:#fff}
-.welcome-detail-close {position:absolute; right:78px; top:2px; display:block; width:27px; height:27px; background:url(../images/welcome-close.png)}
+.welcome-detail-text {float:left; width:50%; font:18px/22px MuseoSansCyrl100, sans-serif; color:#fff; position:relative; z-index:1}
+.welcome-detail-close {position:absolute; right:78px; top:88px; display:block; width:27px; height:27px; background:url(../images/welcome-close.png); z-index:1}
 
 .gallery {margin:109px 0 0 0}
 
@@ -71,8 +137,8 @@ a.welcome-detail-logo-link {display:block; margin:32px 0 0 0; width:144px; heigh
 .gallery-big-item {display:inline-block; vertical-align:top; width:100%; font-size:16px; line-height:19px; letter-spacing:0; white-space:normal; padding:31px 0 0 0}
 .gallery-big-preview {height:341px; position:relative}
 .gallery-big-preview-poster {position:absolute; left:0; top:0; right:0; bottom:0; background-repeat:no-repeat; background-position:center}
-.gallery-big-preview-shadow-left {position:absolute; left:0; top:0; bottom:0; width:281px; background:url(../images/gallery-big-shadow-left.png)}
-.gallery-big-preview-shadow-right {position:absolute; right:0; top:0; bottom:0; width:281px; background:url(../images/gallery-big-shadow-right.png)}
+.gallery-big-preview-shadow-left {position:absolute; left:0; top:0; bottom:0; width:281px; background:url(../images/gallery-big-shadow-left.png); background-size:100% auto; pointer-events:none}
+.gallery-big-preview-shadow-right {position:absolute; right:0; top:0; bottom:0; width:281px; background:url(../images/gallery-big-shadow-right.png); background-size:100% auto; pointer-events:none}
 .gallery-title {float:left; width:50%; color:#fff; text-transform:uppercase; margin:-13px 0 0 0; position:relative; letter-spacing:-1px}
 .gallery-title-we {font:26px/34px MuseoSansCyrl900, sans-serif; color:#3cbdd5; position:absolute; left:0; top:-18px}
 .gallery-title-text {font:56px/68px MuseoSansCyrl900, sans-serif}
@@ -102,8 +168,8 @@ a.welcome-detail-logo-link {display:block; margin:32px 0 0 0; width:144px; heigh
 
 .gallery-list {position:relative; padding:0 110px; max-width:1220px; margin:0 auto}
 .gallery-list-inner {font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; position:relative; width:100%; overflow:hidden}
-.gallery-list-inner:before {content:""; display:block; position:absolute; z-index:9; left:0; top:0; bottom:0; width:281px; background:url(../images/gallery-big-shadow-left.png)}
-.gallery-list-inner:after {content:""; display:block; position:absolute; z-index:9; right:0; top:0; bottom:0; width:281px; background:url(../images/gallery-big-shadow-right.png)}
+.gallery-list-inner:before {content:""; display:block; position:absolute; z-index:9; left:0; top:0; bottom:0; width:100px; background:url(../images/gallery-big-shadow-left.png); background-size:100% auto; pointer-events:none}
+.gallery-list-inner:after {content:""; display:block; position:absolute; z-index:9; right:0; top:0; bottom:0; width:100px; background:url(../images/gallery-big-shadow-right.png); background-size:100% auto; pointer-events:none}
 .gallery-list-item {display:inline-block; vertical-align:top; white-space:normal; width:242px; padding:7px 0 0 0}
 .gallery-list-item a {display:block; margin:0 1px}
 .gallery-list-item.active a {color:#3cbdd5}
@@ -119,6 +185,10 @@ a.welcome-detail-logo-link {display:block; margin:32px 0 0 0; width:144px; heigh
 .gallery-list .slick-prev {left:0}
 .gallery-list .slick-next {right:0; background-position:-24px top}
 
+@media screen and (max-width:1007px) {
+    .gallery-list {display:none}
+}
+
 .vip {padding:141px 0 0 0}
 .vip-content-we {text-transform:uppercase; font:26px/31px MuseoSansCyrl900, sans-serif}
 .vip-content-title {color:#fff; text-transform:uppercase; font:56px/68px MuseoSansCyrl900, sans-serif; margin:-13px 0 0 0}
@@ -132,8 +202,36 @@ a.welcome-detail-logo-link {display:block; margin:32px 0 0 0; width:144px; heigh
 .vip-content-item-text span {font-family:MuseoSansCyrl900, sans-serif; color:#a20f13}
 a.vip-content-item-link {display:block; margin:44px 0 0 0; width:144px; height:40px; background:#3cbdd5; font:13px/40px MuseoSansCyrl900, sans-serif; text-transform:uppercase; text-align:center; color:#000}
 
+@media screen and (max-width:1007px) {
+    .vip {padding:141px 50px 0 50px}
+    .vip-content-we {font-size:32px; line-height:36px}
+    .vip-content-title {margin:-2px 0 0 0}
+    .vip-content {width:auto; margin:0; padding:46px 0 0 0}
+    .vip-content-item {width:50%}
+}
+
 footer {padding:95px 0 98px 0}
 footer:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
 .copyrights {float:left; color:#fff; text-transform:uppercase; font-family:MuseoSansCyrl100, sans-serif; padding:12px 0 0 72px}
 .social {float:right; line-height:0; padding:0 72px 0 0}
 .social a {float:left; margin:0 0 0 9px}
+
+@media screen and (max-width:1007px) {
+    footer {padding:80px 0 67px 0}
+    .social {float:none; font-size:0; padding:0; letter-spacing:-1px; text-align:center}
+    .social a {display:inline-block; float:none; vertical-align:middle; margin:0 4px}
+    .copyrights {float:none; font-size:16px; text-align:center; padding:38px 0 0 0}
+}
+
+.video-window {display:none; position:fixed; left:0; top:0; right:0; bottom:0; z-index:9999; background:rgba(0, 0, 0, .8)}
+.video-window-content {background:#000; position:absolute; left:50%; top:50%; transform:translate(-50%, -50%); width:1008px}
+.video-player {position:relative; height:567px}
+.video-player iframe {position:absolute; left:0; top:0; width:100% !important; height:100% !important}
+.video-window-close {display:block; position:absolute; width:27px; height:27px; background:url(../images/welcome-close.png); right:-37px; top:-37px}
+
+@media screen and (max-width:1007px) {
+    .video-window-content {width:560px}
+    .video-player {height:315px}
+}
+
+.video-window-open .video-window {display:block}
