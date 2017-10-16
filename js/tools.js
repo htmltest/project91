@@ -39,6 +39,8 @@ $(document).ready(function() {
                 $(this).parent().addClass('active');
             }
         });
+
+        $('.welcome-detail-logo-bg-2').css({'margin-left': $('.welcome-logos a').eq(1).offset().left - $('.welcome-logos a').eq(1).width() / 2});
     });
 
     $('body').on('click', '.gallery-list-item a', function(e) {
@@ -159,8 +161,12 @@ $(document).ready(function() {
             var curLeft = $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo-bg').offset().left;
             var curWidth = $('.wrapper .welcome-detail').eq(curIndex).width();
             var curSize = (curWidth - curLeft) * 2;
+            if (curSize < curWidth) {
+                curSize = curWidth * 2;
+            }
             $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo').eq(curIndex).animate({'opacity': 1}, 300, function() {
                 $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo-bg').css({'width': 0, 'height': 0, 'border-radius': '50%'}).animate({'width': curSize, 'height': curSize, 'border-radius': '0%'}, 500, function() {
+                    $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo').eq(curIndex).addClass('open');
                     $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo a img').animate({'opacity': .1}, 300, function() {
                         $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-text').animate({'opacity': 1, 'top': 0}, 300, function() {
                             $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-close').animate({'opacity': 1}, 300, function() {
@@ -178,6 +184,7 @@ $(document).ready(function() {
             $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-close').css({'opacity': 0});
             $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo').eq(curIndex).animate({'opacity': 1}, 300, function() {
                 $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo-bg').css({'width': 0, 'height': 0, 'border-radius': '50%'}).animate({'width': curSize, 'height': curSize, 'border-radius': '0%'}, 500, function() {
+                    $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo').eq(curIndex).addClass('open');
                     $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo a img').animate({'opacity': .1}, 300, function() {
                         $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-text').animate({'opacity': 1, 'top': 0}, 300, function() {
                             $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-close').animate({'opacity': 1}, 300);
@@ -196,6 +203,7 @@ $(document).ready(function() {
             $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-close').animate({'opacity': 0}, 300, function() {
                 $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-text').animate({'opacity': 0, 'top': -50}, 300, function() {
                     $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo a img').animate({'opacity': 0}, 300, function() {
+                        $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo').eq(curIndex).removeClass('open');
                         $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo-bg').animate({'width': 0, 'height': 0, 'border-radius': '50%'}, 500, function() {
                             $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo').eq(curIndex).animate({'opacity': 0}, 300, function() {
                                 $('.wrapper .welcome-detail').eq(curIndex).css({'display': 'none'});
@@ -209,6 +217,7 @@ $(document).ready(function() {
             $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-close').animate({'opacity': 0}, 300, function() {
                 $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-text').animate({'opacity': 0, 'top': -50}, 300, function() {
                     $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo a img').animate({'opacity': 0}, 300, function() {
+                        $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo').eq(curIndex).removeClass('open');
                         $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo-bg').animate({'width': 0, 'height': 0, 'border-radius': '50%'}, 500, function() {
                             $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo').eq(curIndex).animate({'opacity': 0}, 300, function() {
                                 $('.header-bg .welcome-detail').eq(curIndex).css({'display': 'none'});
@@ -246,6 +255,9 @@ $(document).ready(function() {
                                 var curLeft = $('.wrapper .welcome-detail').eq(newIndex).find('.welcome-detail-logo-bg').offset().left;
                                 var curWidth = $('.wrapper .welcome-detail').eq(newIndex).width();
                                 var curSize = (curWidth - curLeft) * 2;
+                                if (curSize < curWidth) {
+                                    curSize = curWidth * 2;
+                                }
                                 $('.wrapper .welcome-detail').eq(newIndex).find('.welcome-detail-logo').eq(newIndex).animate({'opacity': 1}, 300, function() {
                                     $('.wrapper .welcome-detail').eq(newIndex).find('.welcome-detail-logo-bg').css({'width': 0, 'height': 0, 'border-radius': '50%'}).animate({'width': curSize, 'height': curSize, 'border-radius': '0%'}, 500, function() {
                                         $('.wrapper .welcome-detail').eq(newIndex).find('.welcome-detail-logo a img').animate({'opacity': .1}, 300, function() {
@@ -277,6 +289,9 @@ $(document).ready(function() {
                                 var curLeft = $('.wrapper .welcome-detail').eq(newIndex).find('.welcome-detail-logo-bg').offset().left;
                                 var curWidth = $('.wrapper .welcome-detail').eq(newIndex).width();
                                 var curSize = (curWidth - curLeft) * 2;
+                                if (curSize < curWidth) {
+                                    curSize = curWidth * 2;
+                                }
                                 $('.header-bg .welcome-detail').eq(newIndex).find('.welcome-detail-logo').eq(newIndex).animate({'opacity': 1}, 300, function() {
                                     $('.header-bg .welcome-detail').eq(newIndex).find('.welcome-detail-logo-bg').css({'width': 0, 'height': 0, 'border-radius': '50%'}).animate({'width': curSize, 'height': curSize, 'border-radius': '0%'}, 500, function() {
                                         $('.header-bg .welcome-detail').eq(newIndex).find('.welcome-detail-logo a img').animate({'opacity': .1}, 300, function() {
