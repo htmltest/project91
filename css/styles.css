@@ -10,14 +10,17 @@ body {min-width:480px; margin:0; padding:0; font:16px/19px MuseoSansCyrl500, san
     body {font-size:26px; line-height:31px}
 }
 
-a {outline:none; color:#fff; text-decoration:none; transition:color .3s ease}
-a:hover {color:#3cbdd5; text-decoration:none}
+a,
+a:link,
+a:visited {outline:none; color:#fff; text-decoration:none; transition:color .3s ease}
+a:hover,
+a:focus {color:#3cbdd5; text-decoration:none}
 
 img {border:none}
 
 .wrapper {min-width:480px; width:100%; position:relative; overflow:hidden}
 
-.container {max-width:968px; padding:0 20px; margin:0 auto; position:relative}
+.container {max-width:988px; padding:0 20px; margin:0 auto; position:relative; width:auto}
 .container:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
 
 header {position:fixed; left:0; top:0; right:0; z-index:99; height:98px; background:#000; overflow:hidden}
@@ -106,8 +109,8 @@ nav ul li a:hover:after {content:""; display:block; position:absolute; left:0; b
 }
 
 .we-block:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
-.we-block-title {float:left; width:50%; text-transform:uppercase; font:56px/68px MuseoSansCyrl900, sans-serif; color:#fff; letter-spacing:-3px}
-.we-block-text {float:left; width:50%; padding:63px 0 0 0}
+.we-block-title {text-transform:uppercase; font:56px/68px MuseoSansCyrl900, sans-serif; color:#fff; letter-spacing:-3px}
+.we-block-text {padding:63px 0 0 0}
 .we-block-text p {margin:0; padding:0}
 .we-block-text p+p {margin:19px 0 0 0}
 
@@ -116,19 +119,19 @@ nav ul li a:hover:after {content:""; display:block; position:absolute; left:0; b
 }
 
 @media screen and (max-width:767px) {
-    .we-block-title {float:none; width:auto; padding:111px 25px 0 25px}
+    .we-block-title {padding:111px 25px 0 25px}
     .we-block-title br {display:none}
-    .we-block-text {float:none; width:auto; padding:16px 25px 0 25px}
+    .we-block-text {padding:16px 25px 0 25px}
     .we-block-text p+p {margin:31px 0 0 0}
 }
 
 .welcome {margin:107px 0 0 0; position:relative}
 .welcome .container {position:static}
 .welcome:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
-.welcome-logos {float:left; width:50%; line-height:0; padding:5px 0 0 0}
+.welcome-logos {line-height:0; padding:5px 0 0 0}
 .welcome-logos a {float:left}
 .welcome-logos a+a {margin:0 0 0 92px}
-.welcome-text {float:left; width:50%; text-transform:uppercase; font:26px/31px MuseoSansCyrl100, sans-serif; color:#fff}
+.welcome-text {text-transform:uppercase; font:26px/31px MuseoSansCyrl100, sans-serif; color:#fff}
 .welcome-text span {font-family:MuseoSansCyrl900, sans-serif; color:#3cbdd5}
 
 @media screen and (max-width:1007px) {
@@ -136,15 +139,15 @@ nav ul li a:hover:after {content:""; display:block; position:absolute; left:0; b
 }
 
 @media screen and (max-width:767px) {
-    .welcome-logos {float:none; width:auto; padding:5px 25px 0 25px}
+    .welcome-logos {padding:5px 25px 0 25px}
     .welcome-logos:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
     .welcome-logos a+a {float:right; margin:0}
     .welcome-logos img {width:180px}
-    .welcome-text {float:none; width:auto; font-size:32px; line-height:38px; padding:70px 25px 0 25px}
+    .welcome-text {font-size:32px; line-height:38px; padding:70px 25px 0 25px}
 }
 
 .welcome-detail {display:none; position:absolute; left:0; top:-86px; right:0; bottom:-90px; padding:86px 0 0 0; overflow:hidden}
-.welcome-detail-logos {float:left; width:50%; line-height:0; padding:5px 0 0 0}
+.welcome-detail-logos {line-height:0; padding:5px 0 0 0}
 .welcome-detail-logo {float:left; position:relative}
 .welcome-detail-logo-bg {position:absolute; width:0; height:0; left:73px; top:57px; transform:translate(-50%, -50%); background:#2f5fa0; border-radius:50%}
 .welcome-detail-logo-bg-2 {background:#a20f13}
@@ -153,7 +156,7 @@ nav ul li a:hover:after {content:""; display:block; position:absolute; left:0; b
 .welcome-detail-logo a {position:relative; z-index:1}
 .welcome-detail-logo a img {opacity:.1}
 a.welcome-detail-logo-link {display:block; margin:32px 0 0 0; width:144px; height:40px; background:#3cbdd5; font:13px/40px MuseoSansCyrl900, sans-serif; text-transform:uppercase; text-align:center; color:#000}
-.welcome-detail-text {float:left; width:50%; font:18px/22px MuseoSansCyrl100, sans-serif; color:#fff; position:relative; z-index:1}
+.welcome-detail-text {font:18px/22px MuseoSansCyrl100, sans-serif; color:#fff; position:relative; z-index:1}
 .welcome-detail-close {position:absolute; right:78px; top:88px; display:block; width:27px; height:27px; background:url(../images/welcome-close.png); z-index:1}
 a.welcome-detail-text-link {display:none}
 
@@ -170,14 +173,13 @@ a.welcome-detail-text-link {display:none}
     .welcome-detail {padding:26px 0 0 0}
     .welcome-detail .container {padding:0}
     .welcome-detail-close {right:21px; bottom:50px; top:auto; width:39px; height:39px; background:url(../images/welcome-close-mobile.png)}
-    .welcome-detail-logos {float:none; width:auto}
     .welcome-detail-logo {float:none; display:none}
     .welcome-detail-logo+.welcome-detail-logo {margin:0}
     .welcome-detail-logo.active {display:block; width:70px; padding:0 0 0 25px}
     .welcome-detail-logo a {display:none}
     .welcome-detail-logo img {width:180px; visibility:hidden}
     .welcome-detail-logo.open img {visibility:visible}
-    .welcome-detail-text {float:none; width:auto; font:23px/28px MuseoSansCyrl500, sans-serif; padding:25px; background:#2f5fa0; min-height:400px}
+    .welcome-detail-text {font:23px/28px MuseoSansCyrl500, sans-serif; padding:25px; background:#2f5fa0; min-height:400px}
     .welcome-detail-text-2 {background:#a20f13}
     a.welcome-detail-text-link {display:block; margin:25px auto 0 auto; width:216px; height:60px; background:#3cbdd5; font:20px/60px MuseoSansCyrl900, sans-serif; text-transform:uppercase; text-align:center; color:#000}
     .welcome-detail-logo-bg {left:169px; top:78px}
@@ -192,11 +194,11 @@ a.welcome-detail-text-link {display:none}
 .gallery-big-preview-poster {position:absolute; left:0; top:0; right:0; bottom:0; background-repeat:no-repeat; background-position:center}
 .gallery-big-preview-shadow-left {position:absolute; left:0; top:0; bottom:0; width:281px; background:url(../images/gallery-big-shadow-left.png); background-size:100% auto; pointer-events:none}
 .gallery-big-preview-shadow-right {position:absolute; right:0; top:0; bottom:0; width:281px; background:url(../images/gallery-big-shadow-right.png); background-size:100% auto; pointer-events:none}
-.gallery-title {float:left; width:50%; color:#fff; text-transform:uppercase; margin:-13px 0 0 0; position:relative; letter-spacing:-1px}
+.gallery-title {color:#fff; text-transform:uppercase; margin:-13px 0 0 0; position:relative; letter-spacing:-1px}
 .gallery-title-we {font:26px/34px MuseoSansCyrl900, sans-serif; color:#3cbdd5; position:absolute; left:0; top:-18px}
 .gallery-title-text {font:56px/68px MuseoSansCyrl900, sans-serif}
 .gallery-title-descr {font-size:18px; line-height:21px; margin:-8px 0 0 0}
-.gallery-subscribe {float:left; width:50%; color:#fff; text-transform:uppercase; padding:8px 0 0 0; letter-spacing:-1px}
+.gallery-subscribe {color:#fff; text-transform:uppercase; padding:8px 0 0 0; letter-spacing:-1px}
 .gallery-subscribe-title {font:26px/34px MuseoSansCyrl100, sans-serif}
 .gallery-subscribe-free {font:26px/34px MuseoSansCyrl900, sans-serif}
 .gallery-subscribe-free span {display:inline-block; vertical-align:top; padding:0 20px; margin:0 0 0 -20px; background:#a20f13}
@@ -211,10 +213,10 @@ a.welcome-detail-text-link {display:none}
 @media screen and (max-width:767px) {
     .gallery-big-preview {height:500px}
     .gallery-big-preview-poster {background-size:cover}
-    .gallery-title {float:none; width:auto; padding:0 0 0 100px; margin:0; top:-13px}
+    .gallery-title {padding:0 0 0 100px; margin:0; top:-13px}
     .gallery-title-we {left:100px}
     .gallery-title-descr {display:none}
-    .gallery-subscribe  {float:none; width:auto; padding:0 0 0 100px; margin:-13px 0 0 0}
+    .gallery-subscribe  {padding:0 0 0 100px; margin:-13px 0 0 0}
     .gallery-big-play {width:140px; height:140px; bottom:-70px; margin:0 0 0 -70px}
     .gallery-big-play:after {border-left-width:38px; border-top-width:23px; border-bottom-width:23px; left:56px; top:47px}
     .gallery-big-list .slick-prev,
@@ -225,26 +227,25 @@ a.welcome-detail-text-link {display:none}
 }
 
 .gallery-big-content {padding:0 0 46px 0}
-.gallery-big-info {float:left; width:50%; margin:-7px 0 0 0}
+.gallery-big-info {margin:-7px 0 0 0}
 .gallery-big-info-title {text-transform:uppercase; color:#fff; font:36px/42px MuseoSansCyrl100, sans-serif; padding:0 35px 0 0; letter-spacing:-1px}
 .gallery-big-info-title-original {text-transform:uppercase; font-size:26px; line-height:32px; margin:-2px 0 0 0; letter-spacing:-1px}
 .gallery-big-info-tech {color:#fff; padding:18px 0 0 0}
 .gallery-big-info-stat {padding:15px 0 0 0}
-.gallery-big-info-stat:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
 .gallery-big-info-imdb {float:left; line-height:0}
 .gallery-big-info-age {float:left; color:#fff; font-size:36px; line-height:35px; margin:0 0 0 26px}
 .gallery-big-info-res {float:left; color:#fff; font:36px/35px MuseoSansCyrl900, sans-serif; margin:0 0 0 21px}
-.gallery-big-text {float:left; width:50%; padding:62px 0 0 0}
+.gallery-big-text {padding:62px 0 0 0}
 
 @media screen and (max-width:767px) {
     .gallery-big-content  {padding:0}
-    .gallery-big-info {width:auto; float:none; padding:117px 25px 0 25px; margin:0}
+    .gallery-big-info {padding:117px 25px 0 25px; margin:0}
     .gallery-big-info-title {font-size:46px; line-height:56px; padding:0}
     .gallery-big-info-title-original {font-size:32px; line-height:40px}
-    .gallery-big-text {float:none; width:auto; padding:39px 25px 0 25px}
+    .gallery-big-text {padding:39px 25px 0 25px}
 }
 
-.gallery-list {position:relative; padding:0 110px; max-width:1220px; margin:0 auto}
+.gallery-list {position:relative; padding:0 110px; max-width:1440px; margin:0 auto}
 .gallery-list-inner {font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; position:relative; width:100%; overflow:hidden}
 .gallery-list-inner:before {content:""; display:block; position:absolute; z-index:9; left:0; top:0; bottom:0; width:100px; background:url(../images/gallery-big-shadow-left.png); background-size:100% auto; pointer-events:none}
 .gallery-list-inner:after {content:""; display:block; position:absolute; z-index:9; right:0; top:0; bottom:0; width:100px; background:url(../images/gallery-big-shadow-right.png); background-size:100% auto; pointer-events:none}
