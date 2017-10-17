@@ -99,7 +99,7 @@ nav ul li a:hover:after {content:""; display:block; position:absolute; left:0; b
 }
 
 .we-poster {height:400px; background-position:center top; background-size:cover}
-.we-play {position:relative; width:70px; height:70px; display:block; margin:-35px auto -48px auto; border-radius:50%; background:#3cbdd5}
+.we-play {position:relative; width:70px; height:70px; display:block; margin:-35px auto -48px auto; border-radius:50%; background:#3cbdd5; z-index:1}
 .we-play:after {content:""; display:block; width:0; height:0; border-left:19px solid #fff; border-top:11px solid transparent; border-bottom:11px solid transparent; position:absolute; left:28px; top:24px}
 
 @media screen and (max-width:767px) {
@@ -202,7 +202,7 @@ a.welcome-detail-text-link {display:none}
 .gallery-subscribe-title {font:26px/34px MuseoSansCyrl100, sans-serif}
 .gallery-subscribe-free {font:26px/34px MuseoSansCyrl900, sans-serif}
 .gallery-subscribe-free span {display:inline-block; vertical-align:top; padding:0 20px; margin:0 0 0 -20px; background:#a20f13}
-.gallery-big-play {position:absolute; left:50%; bottom:-35px; width:70px; height:70px; display:block; margin:0 0 0 -35px; border-radius:50%; background:#3cbdd5}
+.gallery-big-play {position:absolute; left:50%; bottom:-35px; width:70px; height:70px; display:block; margin:0 0 0 -35px; border-radius:50%; background:#3cbdd5; z-index:1}
 .gallery-big-play:after {content:""; display:block; width:0; height:0; border-left:19px solid #fff; border-top:11px solid transparent; border-bottom:11px solid transparent; position:absolute; left:28px; top:24px}
 .gallery-big-list .slick-prev,
 .gallery-big-list .slick-next {display:block; position:absolute; z-index:10; top:366px; width:23px; height:14px; border:none; border-radius:0; background:url(../images/arrows.png); margin:0; padding:0; -webkit-appearance:none; cursor:pointer}
@@ -232,7 +232,8 @@ a.welcome-detail-text-link {display:none}
 .gallery-big-info-title-original {text-transform:uppercase; font-size:26px; line-height:32px; margin:-2px 0 0 0; letter-spacing:-1px}
 .gallery-big-info-tech {color:#fff; padding:18px 0 0 0}
 .gallery-big-info-stat {padding:15px 0 0 0}
-.gallery-big-info-imdb {float:left; line-height:0}
+.gallery-big-info-imdb {float:left}
+.gallery-big-info-imdb a {display:block; width:71px; height:35px; background:url(../images/imdb.png); text-align:center; text-decoration:none; color:#000; padding:0 0 0 36px; font:14px/35px MuseoSansCyrl900, sans-serif}
 .gallery-big-info-age {float:left; color:#fff; font-size:36px; line-height:35px; margin:0 0 0 26px}
 .gallery-big-info-res {float:left; color:#fff; font:36px/35px MuseoSansCyrl900, sans-serif; margin:0 0 0 21px}
 .gallery-big-text {padding:62px 0 0 0}
