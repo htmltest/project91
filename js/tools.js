@@ -27,7 +27,7 @@ $(document).ready(function() {
         var curHeight = $(window).height() / 3;
         $('nav a').each(function() {
             var curBlock = $(this).attr('href');
-            if ($(curBlock).offset().top < (scroll + curHeight)) {
+            if ($(curBlock).length > 0 && $(curBlock).offset().top < (scroll + curHeight)) {
                 $('nav li.active').removeClass('active');
                 $(this).parent().addClass('active');
             }
@@ -47,18 +47,27 @@ $(document).ready(function() {
         var curItem = $(this).parent();
         if (!curItem.hasClass('active')) {
             var curPreviewList = curItem.parents().filter('.gallery-list');
-            curPreviewList.find('.gallery-list-item.active').removeClass('active');
-            curItem.addClass('active');
-            var curIndex = curPreviewList.find('.gallery-list-item').index(curItem);
+            var curIndex = Number(curItem.data('slick-index'));
             var curGallery = curPreviewList.parents().filter('.gallery');
-            curGallery.find('.gallery-big-list').slick('slickGoTo', curIndex);
+            if (curIndex < 0) {
+                if (curIndex == -1) {
+                    curGallery.find('.gallery-big-list').slick('slickPrev');
+                } else {
+                    curGallery.find('.gallery-big-list').slick('slickPrev');
+                    curGallery.find('.gallery-big-list').slick('slickPrev');
+                }
+            } else {
+                curGallery.find('.gallery-big-list').slick('slickGoTo', curIndex);
+            }
         }
         e.preventDefault();
     });
 
     $('.wrapper .gallery-list-inner-series').slick({
         dots: false,
-        infinite: false,
+        infinite: true,
+        centerMode: true,
+        variableWidth: true,
         slidesToShow: 5,
         slidesToScroll: 3,
         prevArrow: '<button type="button" class="slick-prev"></button>',
@@ -68,7 +77,9 @@ $(document).ready(function() {
 
     $('.header-bg .gallery-list-inner-series').slick({
         dots: false,
-        infinite: false,
+        infinite: true,
+        centerMode: true,
+        variableWidth: true,
         slidesToShow: 5,
         slidesToScroll: 3,
         prevArrow: '<button type="button" class="slick-prev"></button>',
@@ -78,7 +89,9 @@ $(document).ready(function() {
 
     $('.wrapper .gallery-list-inner-movies').slick({
         dots: false,
-        infinite: false,
+        infinite: true,
+        centerMode: true,
+        variableWidth: true,
         slidesToShow: 5,
         slidesToScroll: 3,
         prevArrow: '<button type="button" class="slick-prev"></button>',
@@ -88,7 +101,9 @@ $(document).ready(function() {
 
     $('.header-bg .gallery-list-inner-movies').slick({
         dots: false,
-        infinite: false,
+        infinite: true,
+        centerMode: true,
+        variableWidth: true,
         slidesToShow: 5,
         slidesToScroll: 3,
         prevArrow: '<button type="button" class="slick-prev"></button>',
@@ -98,22 +113,27 @@ $(document).ready(function() {
 
     $('.wrapper .gallery-big-list-series').slick({
         dots: false,
-        infinite: false,
+        infinite: true,
         fade: true,
-        speed: 2000,
+        speed: 1300,
         cssEase: 'linear',
         slidesToShow: 1,
         slidesToScroll: 1,
         prevArrow: '<button type="button" class="slick-prev"></button>',
         nextArrow: '<button type="button" class="slick-next"></button>',
-        asNavFor: '.header-bg .gallery-big-list-series'
+        asNavFor: '.header-bg .gallery-big-list-series, .wrapper .gallery-big-list-series, .wrapper .gallery-list-inner-series'
+    }).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+        $('.wrapper .gallery-list-inner-series .gallery-list-item.active').removeClass('active');
+        $('.wrapper .gallery-list-inner-series .gallery-list-item.slick-current').addClass('active');
+        $('.header-bg .gallery-list-inner-series .gallery-list-item.active').removeClass('active');
+        $('.header-bg .gallery-list-inner-series .gallery-list-item.slick-current').addClass('active');
     });
 
     $('.header-bg .gallery-big-list-series').slick({
         dots: false,
-        infinite: false,
+        infinite: true,
         fade: true,
-        speed: 2000,
+        speed: 1300,
         cssEase: 'linear',
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -124,22 +144,27 @@ $(document).ready(function() {
 
     $('.wrapper .gallery-big-list-movies').slick({
         dots: false,
-        infinite: false,
+        infinite: true,
         fade: true,
-        speed: 2000,
+        speed: 1300,
         cssEase: 'linear',
         slidesToShow: 1,
         slidesToScroll: 1,
         prevArrow: '<button type="button" class="slick-prev"></button>',
         nextArrow: '<button type="button" class="slick-next"></button>',
-        asNavFor: '.header-bg .gallery-big-list-movies'
+        asNavFor: '.header-bg .gallery-big-list-movies, .wrapper .gallery-big-list-movies, .wrapper .gallery-list-inner-movies'
+    }).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+        $('.wrapper .gallery-list-inner-movies .gallery-list-item.active').removeClass('active');
+        $('.wrapper .gallery-list-inner-movies .gallery-list-item.slick-current').addClass('active');
+        $('.header-bg .gallery-list-inner-movies .gallery-list-item.active').removeClass('active');
+        $('.header-bg .gallery-list-inner-movies .gallery-list-item.slick-current').addClass('active');
     });
 
     $('.header-bg .gallery-big-list-movies').slick({
         dots: false,
-        infinite: false,
+        infinite: true,
         fade: true,
-        speed: 2000,
+        speed: 1300,
         cssEase: 'linear',
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -164,12 +189,12 @@ $(document).ready(function() {
             if (curSize < curWidth) {
                 curSize = curWidth * 2;
             }
-            $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo').eq(curIndex).animate({'opacity': 1}, 300, function() {
-                $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo-bg').css({'width': 0, 'height': 0, 'border-radius': '50%'}).animate({'width': curSize, 'height': curSize, 'border-radius': '0%'}, 500, function() {
+            $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo').eq(curIndex).animate({'opacity': 1}, 250, function() {
+                $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo-bg').css({'width': 0, 'height': 0, 'border-radius': '50%'}).animate({'width': curSize, 'height': curSize, 'border-radius': '0%'}, 400, function() {
                     $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo').eq(curIndex).addClass('open');
-                    $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo a img').animate({'opacity': .1}, 300, function() {
-                        $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-text').animate({'opacity': 1, 'top': 0}, 300, function() {
-                            $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-close').animate({'opacity': 1}, 300, function() {
+                    $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo a img').animate({'opacity': .1}, 250, function() {
+                        $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-text').animate({'opacity': 1, 'top': 0}, 250, function() {
+                            $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-close').animate({'opacity': 1}, 250, function() {
                                 isAnimation = false;
                             });
                         });
@@ -182,12 +207,12 @@ $(document).ready(function() {
             $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo a img').css({'opacity': 0});
             $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-text').css({'opacity': 0, 'top': -50});
             $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-close').css({'opacity': 0});
-            $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo').eq(curIndex).animate({'opacity': 1}, 300, function() {
-                $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo-bg').css({'width': 0, 'height': 0, 'border-radius': '50%'}).animate({'width': curSize, 'height': curSize, 'border-radius': '0%'}, 500, function() {
+            $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo').eq(curIndex).animate({'opacity': 1}, 250, function() {
+                $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo-bg').css({'width': 0, 'height': 0, 'border-radius': '50%'}).animate({'width': curSize, 'height': curSize, 'border-radius': '0%'}, 400, function() {
                     $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo').eq(curIndex).addClass('open');
-                    $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo a img').animate({'opacity': .1}, 300, function() {
-                        $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-text').animate({'opacity': 1, 'top': 0}, 300, function() {
-                            $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-close').animate({'opacity': 1}, 300);
+                    $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo a img').animate({'opacity': .1}, 250, function() {
+                        $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-text').animate({'opacity': 1, 'top': 0}, 250, function() {
+                            $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-close').animate({'opacity': 1}, 250);
                         });
                     });
                 });
@@ -200,12 +225,12 @@ $(document).ready(function() {
         if (!isAnimation) {
             isAnimation = true;
             var curIndex = $('.wrapper .welcome-detail-close').index($(this));
-            $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-close').animate({'opacity': 0}, 300, function() {
-                $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-text').animate({'opacity': 0, 'top': -50}, 300, function() {
-                    $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo a img').animate({'opacity': 0}, 300, function() {
+            $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-close').animate({'opacity': 0}, 250, function() {
+                $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-text').animate({'opacity': 0, 'top': -50}, 250, function() {
+                    $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo a img').animate({'opacity': 0}, 250, function() {
                         $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo').eq(curIndex).removeClass('open');
-                        $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo-bg').animate({'width': 0, 'height': 0, 'border-radius': '50%'}, 500, function() {
-                            $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo').eq(curIndex).animate({'opacity': 0}, 300, function() {
+                        $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo-bg').animate({'width': 0, 'height': 0, 'border-radius': '50%'}, 400, function() {
+                            $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo').eq(curIndex).animate({'opacity': 0}, 250, function() {
                                 $('.wrapper .welcome-detail').eq(curIndex).css({'display': 'none'});
                                 isAnimation = false;
                             });
@@ -214,12 +239,12 @@ $(document).ready(function() {
                 });
             });
 
-            $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-close').animate({'opacity': 0}, 300, function() {
-                $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-text').animate({'opacity': 0, 'top': -50}, 300, function() {
-                    $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo a img').animate({'opacity': 0}, 300, function() {
+            $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-close').animate({'opacity': 0}, 250, function() {
+                $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-text').animate({'opacity': 0, 'top': -50}, 250, function() {
+                    $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo a img').animate({'opacity': 0}, 250, function() {
                         $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo').eq(curIndex).removeClass('open');
-                        $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo-bg').animate({'width': 0, 'height': 0, 'border-radius': '50%'}, 500, function() {
-                            $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo').eq(curIndex).animate({'opacity': 0}, 300, function() {
+                        $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo-bg').animate({'width': 0, 'height': 0, 'border-radius': '50%'}, 400, function() {
+                            $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo').eq(curIndex).animate({'opacity': 0}, 250, function() {
                                 $('.header-bg .welcome-detail').eq(curIndex).css({'display': 'none'});
                             });
                         });
@@ -241,11 +266,11 @@ $(document).ready(function() {
                 var curIndex = 1;
             }
 
-            $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-close').animate({'opacity': 0}, 300, function() {
-                $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-text').animate({'opacity': 0, 'top': -50}, 300, function() {
-                    $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo a img').animate({'opacity': 0}, 300, function() {
-                        $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo-bg').animate({'width': 0, 'height': 0, 'border-radius': '50%'}, 500, function() {
-                            $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo').eq(curIndex).animate({'opacity': 0}, 300, function() {
+            $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-close').animate({'opacity': 0}, 250, function() {
+                $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-text').animate({'opacity': 0, 'top': -50}, 250, function() {
+                    $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo a img').animate({'opacity': 0}, 250, function() {
+                        $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo-bg').animate({'width': 0, 'height': 0, 'border-radius': '50%'}, 400, function() {
+                            $('.wrapper .welcome-detail').eq(curIndex).find('.welcome-detail-logo').eq(curIndex).animate({'opacity': 0}, 250, function() {
                                 $('.wrapper .welcome-detail').eq(curIndex).css({'display': 'none'});
                                 $('.wrapper .welcome-detail').eq(newIndex).css({'display': 'block'});
                                 $('.wrapper .welcome-detail').eq(newIndex).find('.welcome-detail-logo').eq(newIndex).css({'opacity': 0});
@@ -258,11 +283,11 @@ $(document).ready(function() {
                                 if (curSize < curWidth) {
                                     curSize = curWidth * 2;
                                 }
-                                $('.wrapper .welcome-detail').eq(newIndex).find('.welcome-detail-logo').eq(newIndex).animate({'opacity': 1}, 300, function() {
-                                    $('.wrapper .welcome-detail').eq(newIndex).find('.welcome-detail-logo-bg').css({'width': 0, 'height': 0, 'border-radius': '50%'}).animate({'width': curSize, 'height': curSize, 'border-radius': '0%'}, 500, function() {
-                                        $('.wrapper .welcome-detail').eq(newIndex).find('.welcome-detail-logo a img').animate({'opacity': .1}, 300, function() {
-                                            $('.wrapper .welcome-detail').eq(newIndex).find('.welcome-detail-text').animate({'opacity': 1, 'top': 0}, 300, function() {
-                                                $('.wrapper .welcome-detail').eq(newIndex).find('.welcome-detail-close').animate({'opacity': 1}, 300, function() {
+                                $('.wrapper .welcome-detail').eq(newIndex).find('.welcome-detail-logo').eq(newIndex).animate({'opacity': 1}, 250, function() {
+                                    $('.wrapper .welcome-detail').eq(newIndex).find('.welcome-detail-logo-bg').css({'width': 0, 'height': 0, 'border-radius': '50%'}).animate({'width': curSize, 'height': curSize, 'border-radius': '0%'}, 400, function() {
+                                        $('.wrapper .welcome-detail').eq(newIndex).find('.welcome-detail-logo a img').animate({'opacity': .1}, 250, function() {
+                                            $('.wrapper .welcome-detail').eq(newIndex).find('.welcome-detail-text').animate({'opacity': 1, 'top': 0}, 250, function() {
+                                                $('.wrapper .welcome-detail').eq(newIndex).find('.welcome-detail-close').animate({'opacity': 1}, 250, function() {
                                                     isAnimation = false;
                                                 });
                                             });
@@ -275,11 +300,11 @@ $(document).ready(function() {
                 });
             });
 
-            $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-close').animate({'opacity': 0}, 300, function() {
-                $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-text').animate({'opacity': 0, 'top': -50}, 300, function() {
-                    $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo a img').animate({'opacity': 0}, 300, function() {
-                        $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo-bg').animate({'width': 0, 'height': 0, 'border-radius': '50%'}, 500, function() {
-                            $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo').eq(curIndex).animate({'opacity': 0}, 300, function() {
+            $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-close').animate({'opacity': 0}, 250, function() {
+                $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-text').animate({'opacity': 0, 'top': -50}, 250, function() {
+                    $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo a img').animate({'opacity': 0}, 250, function() {
+                        $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo-bg').animate({'width': 0, 'height': 0, 'border-radius': '50%'}, 400, function() {
+                            $('.header-bg .welcome-detail').eq(curIndex).find('.welcome-detail-logo').eq(curIndex).animate({'opacity': 0}, 250, function() {
                                 $('.header-bg .welcome-detail').eq(curIndex).css({'display': 'none'});
                                 $('.header-bg .welcome-detail').eq(newIndex).css({'display': 'block'});
                                 $('.header-bg .welcome-detail').eq(newIndex).find('.welcome-detail-logo').eq(newIndex).css({'opacity': 0});
@@ -292,11 +317,11 @@ $(document).ready(function() {
                                 if (curSize < curWidth) {
                                     curSize = curWidth * 2;
                                 }
-                                $('.header-bg .welcome-detail').eq(newIndex).find('.welcome-detail-logo').eq(newIndex).animate({'opacity': 1}, 300, function() {
-                                    $('.header-bg .welcome-detail').eq(newIndex).find('.welcome-detail-logo-bg').css({'width': 0, 'height': 0, 'border-radius': '50%'}).animate({'width': curSize, 'height': curSize, 'border-radius': '0%'}, 500, function() {
-                                        $('.header-bg .welcome-detail').eq(newIndex).find('.welcome-detail-logo a img').animate({'opacity': .1}, 300, function() {
-                                            $('.header-bg .welcome-detail').eq(newIndex).find('.welcome-detail-text').animate({'opacity': 1, 'top': 0}, 300, function() {
-                                                $('.header-bg .welcome-detail').eq(newIndex).find('.welcome-detail-close').animate({'opacity': 1}, 300);
+                                $('.header-bg .welcome-detail').eq(newIndex).find('.welcome-detail-logo').eq(newIndex).animate({'opacity': 1}, 250, function() {
+                                    $('.header-bg .welcome-detail').eq(newIndex).find('.welcome-detail-logo-bg').css({'width': 0, 'height': 0, 'border-radius': '50%'}).animate({'width': curSize, 'height': curSize, 'border-radius': '0%'}, 400, function() {
+                                        $('.header-bg .welcome-detail').eq(newIndex).find('.welcome-detail-logo a img').animate({'opacity': .1}, 250, function() {
+                                            $('.header-bg .welcome-detail').eq(newIndex).find('.welcome-detail-text').animate({'opacity': 1, 'top': 0}, 250, function() {
+                                                $('.header-bg .welcome-detail').eq(newIndex).find('.welcome-detail-close').animate({'opacity': 1}, 250);
                                             });
                                         });
                                     });
@@ -364,4 +389,18 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
+    $('.up').click(function(e) {
+        $.scrollTo(0, {duration : 500});
+        e.preventDefault();
+    });
+
+});
+
+
+$(window).on('load resize scroll', function() {
+    if ($(window).scrollTop() > $(window).height()) {
+        $('.up').css({'display': 'block'});
+    } else {
+        $('.up').css({'display': 'none'});
+    }
 });
