@@ -374,11 +374,6 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
-    $(window).on('resize', function() {
-        $('html').removeClass('video-window-open');
-        $('.video-player').html('');
-    });
-
     $('body').on('click', '.mobile-menu-link', function(e) {
         $('html').addClass('mobile-menu-open');
         e.preventDefault();
