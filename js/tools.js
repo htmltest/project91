@@ -389,18 +389,4 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
-    $('.up').click(function(e) {
-        $.scrollTo(0, {duration : 500});
-        e.preventDefault();
-    });
-
-});
-
-
-$(window).on('load resize scroll', function() {
-    if ($(window).scrollTop() > $(window).height()) {
-        $('.up').css({'display': 'block'});
-    } else {
-        $('.up').css({'display': 'none'});
-    }
 });

@@ -192,10 +192,10 @@ a.welcome-detail-text-link {display:none}
 .gallery-big-list {font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; position:relative; overflow:hidden; max-width:1440px; margin:0 auto}
 .gallery-big-item {display:inline-block; vertical-align:top; width:100%; font-size:16px; line-height:19px; letter-spacing:0; white-space:normal; padding:31px 0 0 0}
 .gallery-big-preview {height:341px; position:relative; display:block}
-.gallery-big-preview-poster {position:absolute; left:0; top:0; right:0; bottom:0; background-repeat:no-repeat; background-position:center}
+.gallery-big-preview-poster {position:absolute; left:0; top:0; right:0; bottom:0; background-repeat:no-repeat; background-position:center; background-size:cover}
 .gallery-big-preview-shadow-left {position:absolute; left:0; top:0; bottom:0; width:281px; background:url(../images/gallery-big-shadow-left.png); background-size:100% auto; pointer-events:none}
 .gallery-big-preview-shadow-right {position:absolute; right:0; top:0; bottom:0; width:281px; background:url(../images/gallery-big-shadow-right.png); background-size:100% auto; pointer-events:none}
-.gallery-title {color:#fff; text-transform:uppercase; margin:-13px 0 0 0; position:relative; letter-spacing:-1px}
+.gallery-title {color:#fff; text-transform:uppercase; margin:-11px 0 0 0; position:relative; letter-spacing:-1px}
 .gallery-title-we {font:26px/34px MuseoSansCyrl900, sans-serif; color:#3cbdd5; position:absolute; left:0; top:-18px}
 .gallery-title-text {font:56px/68px MuseoSansCyrl900, sans-serif}
 .gallery-title-descr {font-size:18px; line-height:21px; margin:-8px 0 0 0}
@@ -208,8 +208,8 @@ a.gallery-big-play:after {content:""; display:block; width:0; height:0; border-l
 a.gallery-big-play:hover {background:#305fa0}
 .gallery-big-list .slick-prev,
 .gallery-big-list .slick-next {display:block; position:absolute; z-index:10; top:366px; width:23px; height:14px; border:none; border-radius:0; background:url(../images/arrows.png); margin:0; padding:0; -webkit-appearance:none; cursor:pointer}
-.gallery-big-list .slick-prev {left:50%; margin-left:-610px}
-.gallery-big-list .slick-next {right:50%; margin-right:-610px; background-position:-24px top}
+.gallery-big-list .slick-prev {left:50%; margin-left:-633px}
+.gallery-big-list .slick-next {right:50%; margin-right:-633px; background-position:-24px top}
 .gallery-title-descr-mobile {display:none}
 
 @media screen and (max-width:767px) {
@@ -250,9 +250,9 @@ a.gallery-big-play:hover {background:#305fa0}
 }
 
 .gallery-list {position:relative; padding:0 110px; max-width:1440px; margin:0 auto}
-.gallery-list-inner {font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; position:relative; width:100%; overflow:hidden}
-.gallery-list-inner:before {content:""; display:block; position:absolute; z-index:9; left:0; top:0; bottom:0; width:100px; background:url(../images/gallery-big-shadow-left.png); background-size:100% auto; pointer-events:none}
-.gallery-list-inner:after {content:""; display:block; position:absolute; z-index:9; right:0; top:0; bottom:0; width:100px; background:url(../images/gallery-big-shadow-right.png); background-size:100% auto; pointer-events:none}
+.gallery-list-inner {font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; position:relative; width:100%}
+.gallery-list-inner:before {content:""; display:block; position:absolute; z-index:9; left:0; top:0; bottom:0; width:100px; background:url(../images/gallery-list-shadow-left.png); pointer-events:none}
+.gallery-list-inner:after {content:""; display:block; position:absolute; z-index:9; right:0; top:0; bottom:0; width:100px; background:url(../images/gallery-list-shadow-right.png); pointer-events:none}
 .gallery-list-item {display:inline-block; vertical-align:top; white-space:normal; width:242px; padding:7px 0 0 0}
 .gallery-list-item a {display:block; margin:0 1px}
 .gallery-list-item.active a {color:#3cbdd5}
@@ -265,8 +265,8 @@ a.gallery-big-play:hover {background:#305fa0}
 .gallery-list-item.active .gallery-list-item-title {font-family:MuseoSansCyrl900, sans-serif}
 .gallery-list .slick-prev,
 .gallery-list .slick-next {display:block; position:absolute; z-index:10; top:80px; width:23px; height:14px; border:none; border-radius:0; background:url(../images/arrows.png); margin:0; padding:0; -webkit-appearance:none; cursor:pointer}
-.gallery-list .slick-prev {left:0}
-.gallery-list .slick-next {right:0; background-position:-24px top}
+.gallery-list .slick-prev {left:-23px}
+.gallery-list .slick-next {right:-23px; background-position:-24px top}
 
 @media screen and (max-width:1007px) {
     .gallery-list {padding:0}
@@ -319,11 +319,6 @@ footer:after {content:"."; display:block; clear:both; visibility:hidden; height:
     .copyrights {float:none; font-size:16px; text-align:center; padding:38px 0 0 0}
     .developer {float:none; margin-right:0; text-align:center}
 }
-
-.up {display:none; position:fixed; right:40px; bottom:40px; z-index:990; width:38px; height:38px; border:1px solid #e7e7e7; border-radius:50%; background:#fff; margin:0; padding:0; -webkit-appearance:none; cursor:pointer}
-.up:hover {border-color:#ea1c23}
-.up:before {content:""; display:block; width:15px; height:9px; background:url(../images/up.png); position:absolute; left:50%; top:50%; margin:-5px 0 0 -8px}
-.up:hover:before {background-position:-15px top}
 
 .video-window {display:none; position:fixed; left:0; top:0; right:0; bottom:0; z-index:9999; background:rgba(0, 0, 0, .8)}
 .video-window-content {background:#000; position:absolute; left:50%; top:50%; transform:translate(-50%, -50%); width:1008px}
