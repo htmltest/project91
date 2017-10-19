@@ -350,4 +350,5 @@ footer:after {content:"."; display:block; clear:both; visibility:hidden; height:
     .video-player {height:259px}
 }
 
+.video-window-open body {overflow:hidden}
 .video-window-open .video-window {display:block}
