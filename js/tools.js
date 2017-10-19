@@ -44,7 +44,7 @@ $(document).ready(function() {
     });
 
     $('body').on('click', '.gallery-list-item a', function(e) {
-        var curItem = $(this).parent();
+        var curItem = $(this).parents().filter('.gallery-list-item');
         if (!curItem.hasClass('active')) {
             var curPreviewList = curItem.parents().filter('.gallery-list');
             var curIndex = Number(curItem.data('slick-index'));

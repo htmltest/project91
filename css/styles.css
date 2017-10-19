@@ -86,12 +86,12 @@ nav ul li a:hover:after {content:""; display:block; position:absolute; left:0; b
     .mobile-menu-close {position:absolute; display:block; width:39px; height:39px; background:url(../images/mobile-menu-close.png); position:absolute; right:21px; top:31px}
     .mobile-menu-list {text-align:center; font:40px/98px MuseoSansCyrl900, sans-serif; text-transform:uppercase; position:relative; letter-spacing:-1px}
     .mobile-menu-list ul {margin:0; padding:0; list-style:none}
-    .mobile-menu-list ul li {margin:43px 0 0 0; padding:0}
+    .mobile-menu-list ul li {margin:10px 0 0 0; padding:0}
     .mobile-menu-list ul li:first-child {margin:0}
     .mobile-menu-list ul li a {display:inline-block; height:98px; color:#fff; position:relative}
     .mobile-menu-list ul li a:after {content:""; display:block; position:absolute; left:0; bottom:0; right:0; height:8px; background:#3cbdd5}
     .mobile-menu-list ul li.active a:after {background:#fff}
-    .mobile-phone {text-align:center; color:#fff; font:40px/68px MuseoSansCyrl100, sans-serif; padding:147px 0 0 0}
+    .mobile-phone {text-align:center; color:#fff; font:40px/68px MuseoSansCyrl100, sans-serif; padding:47px 0 0 0}
     .mobile-phone a {color:#fff; text-decoration:none}
     .mobile-call {padding:31px 0 0 0}
     .mobile-call a {display:block; margin:0 auto; width:216px; height:60px; background:#3cbdd5; font:20px/60px MuseoSansCyrl900, sans-serif; text-transform:uppercase; text-align:center; color:#000; text-decoration:none}
@@ -132,11 +132,12 @@ a.we-play:hover {background:#305fa0}
 .welcome-logos {line-height:0; padding:5px 0 0 0}
 .welcome-logos a {float:left}
 .welcome-logos a+a {margin:0 0 0 92px}
-.welcome-text {text-transform:uppercase; font:26px/31px MuseoSansCyrl100, sans-serif; color:#fff}
+.welcome-text {text-transform:uppercase; font:26px/31px MuseoSansCyrl100, sans-serif; color:#fff; letter-spacing:-1px}
 .welcome-text span {font-family:MuseoSansCyrl900, sans-serif; color:#3cbdd5}
 
 @media screen and (max-width:1007px) {
     .welcome-logos a+a {margin:0 0 0 42px}
+    .welcome-text br {display:none}
 }
 
 @media screen and (max-width:767px) {
@@ -255,6 +256,11 @@ a.gallery-big-play:hover {background:#305fa0}
 .gallery-big-info-res {float:left; color:#fff; font:36px/35px MuseoSansCyrl900, sans-serif; margin:0 0 0 21px}
 .gallery-big-text {padding:62px 0 0 0}
 
+@media screen and (max-width:1007px) {
+    .gallery-big-info  {padding-left:60px}
+    .gallery-big-text {padding-left:15px}
+}
+
 @media screen and (max-width:767px) {
     .gallery-big-content  {padding:0}
     .gallery-big-info {padding:117px 25px 0 25px; margin:0}
@@ -268,15 +274,19 @@ a.gallery-big-play:hover {background:#305fa0}
 .gallery-list-inner:before {content:""; display:block; position:absolute; z-index:9; left:0; top:0; bottom:0; width:100px; background:url(../images/gallery-list-shadow-left.png); pointer-events:none}
 .gallery-list-inner:after {content:""; display:block; position:absolute; z-index:9; right:0; top:0; bottom:0; width:100px; background:url(../images/gallery-list-shadow-right.png); pointer-events:none}
 .gallery-list-item {display:inline-block; vertical-align:top; white-space:normal; width:242px; padding:7px 0 0 0}
-.gallery-list-item a {display:block; margin:0 1px}
-.gallery-list-item.active a {color:#3cbdd5}
-.gallery-list-item-preview {position:relative; top:0; transition:top .5s ease}
-.gallery-list-item a:hover .gallery-list-item-preview,
-.gallery-list-item.active .gallery-list-item-preview {top:-7px}
+.gallery-list-item-inner {margin:0 1px}
+a.gallery-list-item-preview {position:relative; top:0; transition:top .5s ease; display:block}
+.gallery-list-item-inner:hover a.gallery-list-item-preview,
+.gallery-list-item.active a.gallery-list-item-preview {top:-7px}
 .gallery-list-item-preview img {display:block; width:100%}
 .gallery-list-item-preview span {position:absolute; left:9px; bottom:5px; color:#fff; font-size:16px; line-height:19px; letter-spacing:0}
+.gallery-list-item-preview em {display:block; position:absolute}
+.gallery-list-item-preview em {position:absolute; left:50%; top:50%; width:36px; height:36px; display:block; margin:-18px 0 0 -18px; border-radius:50%; background:#3cbdd5; z-index:1; transition:background .3s ease}
+.gallery-list-item-preview em:after {content:""; display:block; width:0; height:0; border-left:10px solid #fff; border-top:5px solid transparent; border-bottom:5px solid transparent; position:absolute; left:50%; top:50%; margin:-5px 0 0 -5px}
+.gallery-list-item-preview:hover em {background:#305fa0}
 .gallery-list-item-title {font-size:18px; line-height:21px; text-transform:uppercase; letter-spacing:0; padding:15px 0 0 0}
 .gallery-list-item.active .gallery-list-item-title {font-family:MuseoSansCyrl900, sans-serif}
+.gallery-list-item.active .gallery-list-item-title a {color:#3cbdd5}
 .gallery-list .slick-prev,
 .gallery-list .slick-next {display:block; position:absolute; z-index:10; top:80px; width:23px; height:14px; border:none; border-radius:0; background:url(../images/arrows.png); margin:0; padding:0; -webkit-appearance:none; cursor:pointer}
 .gallery-list .slick-prev {left:-23px}
@@ -348,6 +358,7 @@ footer:after {content:"."; display:block; clear:both; visibility:hidden; height:
 @media screen and (max-width:767px) {
     .video-window-content {width:460px}
     .video-player {height:259px}
+    .video-window-close {right:0}
 }
 
 .video-window-open body {overflow:hidden}
