@@ -28,7 +28,7 @@ header {position:fixed; left:0; top:0; right:0; z-index:99; height:98px; backgro
 .header-bg {position:absolute; left:-10px; top:-10px; right:-10px; bottom:-100px; padding:10px 0 0 0; overflow:hidden; -webkit-filter:blur(9px); -moz-filter:blur(9px); -mz-filter:blur(9px); -o-filter:blur(9px); filter:blur(9px)}
 .header-bg-inner {margin:0 -100px; padding:0 100px}
 
-.logo {float:left; width:85px; height:40px; background:url(../images/logo.png); margin:28px 0 0 0; position:relative}
+.logo {float:left; width:85px; height:40px; background:url(../images/logo.png); margin:28px 0 0 0; position:relative; cursor:pointer}
 
 nav {float:left; font:26px/98px MuseoSansCyrl900, sans-serif; text-transform:uppercase; position:relative; letter-spacing:-1px}
 nav ul {margin:0; padding:0; list-style:none}
@@ -172,7 +172,8 @@ a.welcome-detail-text-link {display:none}
 }
 
 @media screen and (max-width:767px) {
-    .welcome-detail {padding:26px 0 0 0}
+    .welcome-detail {padding:26px 0 0 0; bottom:-120px}
+    .welcome-detail+.welcome-detail {bottom:-90px}
     .welcome-detail .container {padding:0}
     .welcome-detail-close {right:21px; bottom:50px; top:auto; width:39px; height:39px; background:url(../images/welcome-close-mobile.png)}
     .welcome-detail-logo {float:none; display:none}
@@ -275,13 +276,14 @@ a.gallery-big-play:hover {background:#305fa0}
 .gallery-list-inner:after {content:""; display:block; position:absolute; z-index:9; right:0; top:0; bottom:0; width:100px; background:url(../images/gallery-list-shadow-right.png); pointer-events:none}
 .gallery-list-item {display:inline-block; vertical-align:top; white-space:normal; width:242px; padding:7px 0 0 0}
 .gallery-list-item-inner {margin:0 1px}
-a.gallery-list-item-preview {position:relative; top:0; transition:top .5s ease; display:block}
-.gallery-list-item-inner:hover a.gallery-list-item-preview,
-.gallery-list-item.active a.gallery-list-item-preview {top:-7px}
+.gallery-list-item-preview {position:relative; top:0; transition:top .5s ease}
+.gallery-list-item-inner:hover .gallery-list-item-preview,
+.gallery-list-item.active .gallery-list-item-preview {top:-7px}
 .gallery-list-item-preview img {display:block; width:100%}
 .gallery-list-item-preview span {position:absolute; left:9px; bottom:5px; color:#fff; font-size:16px; line-height:19px; letter-spacing:0}
-.gallery-list-item-preview em {display:block; position:absolute}
-.gallery-list-item-preview em {position:absolute; left:50%; top:50%; width:36px; height:36px; display:block; margin:-18px 0 0 -18px; border-radius:50%; background:#3cbdd5; z-index:1; transition:background .3s ease}
+.gallery-list-item-preview .video-link {display:none; position:absolute; left:0; top:0; right:0; bottom:0}
+.gallery-list-item.active .gallery-list-item-preview .video-link {display:block}
+.gallery-list-item-preview em {position:absolute; left:50%; top:50%; width:36px; height:36px; display:block; margin:-18px 0 0 -18px; border-radius:50%; background:#3cbdd5; z-index:1; transition:all .3s ease}
 .gallery-list-item-preview em:after {content:""; display:block; width:0; height:0; border-left:10px solid #fff; border-top:5px solid transparent; border-bottom:5px solid transparent; position:absolute; left:50%; top:50%; margin:-5px 0 0 -5px}
 .gallery-list-item-preview:hover em {background:#305fa0}
 .gallery-list-item-title {font-size:18px; line-height:21px; text-transform:uppercase; letter-spacing:0; padding:15px 0 0 0}
@@ -363,3 +365,5 @@ footer:after {content:"."; display:block; clear:both; visibility:hidden; height:
 
 .video-window-open body {overflow:hidden}
 .video-window-open .video-window {display:block}
+
+.up {display:none; position:fixed; right:72px; bottom:50px; z-index:990; width:50px; height:50px; border-radius:50%; background:url(../images/up.svg) no-repeat center; background-size:cover; margin:0; padding:0; -webkit-appearance:none; cursor:pointer}
