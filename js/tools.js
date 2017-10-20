@@ -72,8 +72,6 @@ $(document).ready(function() {
         infinite: true,
         centerMode: true,
         variableWidth: true,
-        slidesToShow: 5,
-        slidesToScroll: 3,
         prevArrow: '<button type="button" class="slick-prev"></button>',
         nextArrow: '<button type="button" class="slick-next"></button>',
         asNavFor: '.header-bg .gallery-list-inner-series'
@@ -84,8 +82,6 @@ $(document).ready(function() {
         infinite: true,
         centerMode: true,
         variableWidth: true,
-        slidesToShow: 5,
-        slidesToScroll: 3,
         prevArrow: '<button type="button" class="slick-prev"></button>',
         nextArrow: '<button type="button" class="slick-next"></button>',
         asNavFor: '.wrapper .gallery-list-inner-series'
@@ -96,8 +92,6 @@ $(document).ready(function() {
         infinite: true,
         centerMode: true,
         variableWidth: true,
-        slidesToShow: 5,
-        slidesToScroll: 3,
         prevArrow: '<button type="button" class="slick-prev"></button>',
         nextArrow: '<button type="button" class="slick-next"></button>',
         asNavFor: '.header-bg .gallery-list-inner-movies'
@@ -108,8 +102,6 @@ $(document).ready(function() {
         infinite: true,
         centerMode: true,
         variableWidth: true,
-        slidesToShow: 5,
-        slidesToScroll: 3,
         prevArrow: '<button type="button" class="slick-prev"></button>',
         nextArrow: '<button type="button" class="slick-next"></button>',
         asNavFor: '.wrapper .gallery-list-inner-movies'
