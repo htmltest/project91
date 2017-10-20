@@ -50,12 +50,8 @@ $(document).ready(function() {
             var curIndex = Number(curItem.data('slick-index'));
             var curGallery = curPreviewList.parents().filter('.gallery');
             if (curIndex < 0) {
-                if (curIndex == -1) {
-                    curGallery.find('.gallery-big-list').slick('slickPrev');
-                } else {
-                    curGallery.find('.gallery-big-list').slick('slickPrev');
-                    curGallery.find('.gallery-big-list').slick('slickPrev');
-                }
+                var newIndex = curGallery.find('.gallery-list-item:not(.slick-cloned)').length + curIndex;
+                curGallery.find('.gallery-big-list').slick('slickGoTo', newIndex);
             } else {
                 curGallery.find('.gallery-big-list').slick('slickGoTo', curIndex);
             }
