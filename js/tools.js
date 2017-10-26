@@ -17,6 +17,27 @@ $(document).ready(function() {
 
     $('.header-bg-inner').html($('.wrapper').html());
     $('.header-bg-inner').find('section[id]').removeAttr('id');
+    $('.wrapper .we-poster').html('<iframe src="https://player.vimeo.com/video/239679055" id="player" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
+
+    var player;
+
+    player = new Vimeo.Player(document.getElementById('player'));
+
+    player.ready().then(function() {
+        player.play();
+    });
+    
+    player.on('play', function() {
+        $('html').addClass('play');
+    });
+
+    player.on('pause', function() {
+        $('html').removeClass('play');
+    });
+
+    player.on('ended', function() {
+        $('html').removeClass('play');
+    });
 
     $(window).on('load resize scroll', function() {
         var scroll = $(window).scrollTop();
@@ -400,11 +421,16 @@ $(window).on('load resize scroll', function() {
     } else {
         $('.up').css({'display': 'none'});
     }
-    console.log();
     var curDiff = $(window).scrollTop() + $(window).height() - $('footer').offset().top - 100;
     if (curDiff > 0) {
         $('.up').css({'margin-bottom': curDiff});
     } else {
         $('.up').css({'margin-bottom': 0});
+    }
+
+    if ($(window).scrollTop() > $('.wrapper .we-poster').outerHeight()) {
+        $('html').addClass('playscroll');
+    } else {
+        $('html').removeClass('playscroll');
     }
 });
