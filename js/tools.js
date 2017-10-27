@@ -15,9 +15,11 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
-    $('.header-bg-inner').html($('.wrapper').html());
-    $('.header-bg-inner').find('section[id]').removeAttr('id');
-    $('.wrapper .we-poster').html('<iframe src="https://player.vimeo.com/video/239679055" id="player" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
+    if (Modernizr.cssfilters) {
+        $('.header-bg-inner').html($('.wrapper').html());
+        $('.header-bg-inner').find('section[id]').removeAttr('id');
+        $('.wrapper .we-poster').html('<iframe src="https://player.vimeo.com/video/239679055" id="player" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe><a href="#" class="replay"></a>');
+    }
 
     var player;
 
@@ -26,9 +28,10 @@ $(document).ready(function() {
     player.ready().then(function() {
         player.play();
     });
-    
+
     player.on('play', function() {
         $('html').addClass('play');
+        $('html').removeClass('hasreplay');
     });
 
     player.on('pause', function() {
@@ -37,36 +40,44 @@ $(document).ready(function() {
 
     player.on('ended', function() {
         $('html').removeClass('play');
+        $('html').addClass('hasreplay');
     });
 
-    $(window).on('load resize scroll', function() {
-        var scroll = $(window).scrollTop();
-        $('.header-bg-inner').css({
-            '-webkit-transform' : 'translateY(-' + scroll + 'px)',
-            '-moz-transform'    : 'translateY(-' + scroll + 'px)',
-            '-mz-transform'     : 'translateY(-' + scroll + 'px)',
-            '-0-transform'      : 'translateY(-' + scroll + 'px)',
-            'transform'         : 'translateY(-' + scroll + 'px)'
-        });
-
-        var curHeight = $(window).height() / 3;
-        $('nav a').each(function() {
-            var curBlock = $(this).attr('href');
-            if ($(curBlock).length > 0 && $(curBlock).offset().top < (scroll + curHeight)) {
-                $('nav li.active').removeClass('active');
-                $(this).parent().addClass('active');
-            }
-        });
-        $('.mobile-menu-list a').each(function() {
-            var curBlock = $(this).attr('href');
-            if ($(curBlock).offset().top < (scroll + curHeight)) {
-                $('.mobile-menu-list li.active').removeClass('active');
-                $(this).parent().addClass('active');
-            }
-        });
-
-        $('.welcome-detail-logo-bg-2').css({'margin-left': $('.welcome-logos a').eq(1).offset().left - $('.welcome-logos a').eq(1).width() / 2});
+    $('body').on('click', '.replay', function(e) {
+        player.play();
+        e.preventDefault();
     });
+
+    if (Modernizr.cssfilters) {
+        $(window).on('load resize scroll', function() {
+            var scroll = $(window).scrollTop();
+            $('.header-bg-inner').css({
+                '-webkit-transform' : 'translateY(-' + scroll + 'px)',
+                '-moz-transform'    : 'translateY(-' + scroll + 'px)',
+                '-mz-transform'     : 'translateY(-' + scroll + 'px)',
+                '-0-transform'      : 'translateY(-' + scroll + 'px)',
+                'transform'         : 'translateY(-' + scroll + 'px)'
+            });
+
+            var curHeight = $(window).height() / 3;
+            $('nav a').each(function() {
+                var curBlock = $(this).attr('href');
+                if ($(curBlock).length > 0 && $(curBlock).offset().top < (scroll + curHeight)) {
+                    $('nav li.active').removeClass('active');
+                    $(this).parent().addClass('active');
+                }
+            });
+            $('.mobile-menu-list a').each(function() {
+                var curBlock = $(this).attr('href');
+                if ($(curBlock).offset().top < (scroll + curHeight)) {
+                    $('.mobile-menu-list li.active').removeClass('active');
+                    $(this).parent().addClass('active');
+                }
+            });
+
+            $('.welcome-detail-logo-bg-2').css({'margin-left': $('.welcome-logos a').eq(1).offset().left - $('.welcome-logos a').eq(1).width() / 2});
+        });
+    }
 
     $('body').on('click', '.gallery-list-item a', function(e) {
         var curItem = $(this).parents().filter('.gallery-list-item');
