@@ -26,7 +26,9 @@ $(document).ready(function() {
     player = new Vimeo.Player(document.getElementById('player'));
 
     player.ready().then(function() {
-        player.play();
+        if ($('html').hasClass('desktop')) {
+            player.play();
+        }
     });
 
     player.on('play', function() {
