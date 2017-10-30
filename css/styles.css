@@ -27,10 +27,18 @@ header {position:fixed; left:0; top:0; right:0; z-index:99; height:98px; backgro
 .play header {top:-98px}
 .playscroll header {top:0}
 
+@media screen and (max-width:767px) and (orientation: landscape) {
+    header {height:50px}
+}
+
 .header-bg {position:absolute; left:-10px; top:-10px; right:-10px; bottom:-100px; padding:10px 0 0 0; overflow:hidden; -webkit-filter:blur(9px); -moz-filter:blur(9px); -mz-filter:blur(9px); -o-filter:blur(9px); filter:blur(9px)}
 .header-bg-inner {margin:0 -100px; padding:0 100px}
 
-.logo {float:left; width:85px; height:40px; background:url(../images/logo.png); margin:28px 0 0 0; position:relative; cursor:pointer}
+.logo {float:left; width:85px; height:40px; background:url(../images/logo.png); margin:28px 0 0 0; position:relative; cursor:pointer; z-index:1}
+
+@media screen and (max-width:767px) and (orientation: landscape) {
+    .logo {margin-top:15px; background-size:100%; background-repeat:no-repeat; width:43px; height:20px}
+}
 
 nav {float:left; font:26px/98px MuseoSansCyrl900, sans-serif; text-transform:uppercase; position:relative; letter-spacing:-1px}
 nav ul {margin:0; padding:0; list-style:none}
@@ -56,6 +64,13 @@ nav ul li a:hover:after {content:""; display:block; position:absolute; left:0; b
     nav ul li.active {display:block}
 }
 
+@media screen and (max-width:767px) and (orientation: landscape) {
+    nav {font-size:30px; line-height:50px}
+    nav ul li a {height:50px}
+    nav ul li.active a:after,
+    nav ul li a:hover:after {display:none}
+}
+
 .phone {position:absolute; white-space:nowrap; position:absolute; left:100%; margin-left:-76px; top:0; font:26px/98px MuseoSansCyrl100, sans-serif}
 .phone a {color:#fff}
 
@@ -78,6 +93,11 @@ nav ul li a:hover:after {content:""; display:block; position:absolute; left:0; b
     .mobile-menu-link:before {content:""; display:block; position:absolute; left:0; top:8px; right:0; height:8px; background:#fff}
 }
 
+@media screen and (max-width:767px) and (orientation: landscape) {
+    .mobile-menu-link {top:15px; border-top-width:4px; border-bottom-width:4px; height:20px; width:23px}
+    .mobile-menu-link:before {top:4px; height:4px}
+}
+
 .mobile-menu {display:none}
 
 @media screen and (max-width:767px) {
@@ -98,6 +118,17 @@ nav ul li a:hover:after {content:""; display:block; position:absolute; left:0; b
     .mobile-call {padding:31px 0 0 0}
     .mobile-call a {display:block; margin:0 auto; width:216px; height:60px; background:#3cbdd5; font:20px/60px MuseoSansCyrl900, sans-serif; text-transform:uppercase; text-align:center; color:#000; text-decoration:none}
     .mobile-call-text {text-align:center; font:20px/30px MuseoSansCyrl900, sans-serif; text-transform:uppercase; padding:41px 0}
+}
+
+@media screen and (max-width:767px) and (orientation: landscape) {
+    .mobile-menu .logo {display:none}
+    .mobile-menu-list {float:left; width:50%; font-size:30px; line-height:70px}
+    .mobile-menu-list ul li {margin:0}
+    .mobile-menu-list ul li a {height:70px}
+    .mobile-phone {float:right; width:50%; font-size:30px; padding:57px  0 0 0}
+    .mobile-call {float:right; width:50%}
+    .mobile-call-text {float:right; clear:right; width:50%; padding-bottom:0}
+    .mobile-menu-close {width:20px; height:20px; background-size:100%; background-repeat:no-repat}
 }
 
 .we-poster {height:0; padding:56.25% 0 0 0; position:relative}
